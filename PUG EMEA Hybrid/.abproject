@@ -1,0 +1,48 @@
+{
+  "ProjectName": "PUG EMEA Hybrid",
+  "ProjectGuid": "6e7956b3-552e-4875-8d9b-2a6ea9b51ad5",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.PUGEMEAHybrid",
+  "DisplayName": "PUG EMEA Hybrid",
+  "Author": "",
+  "Description": "PUG EMEA Hybrid",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{9567fd52-be22-4d9c-bacd-fb1cae9951a4}",
+  "WP8ProductID": "{18b4d71c-260c-428e-b386-e59b1b1d8d6b}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.PUGEMEAHybrid",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
+  "CorePlugins": [
+    "org.apache.cordova.network-information"
+  ]
+}
