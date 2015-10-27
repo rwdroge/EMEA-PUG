@@ -1,12 +1,12 @@
 'use strict';
 
-app.orderLists = kendo.observable({
+app.order2ListView = kendo.observable({
     onShow: function() {},
     afterShow: function() {}
 });
 
-// START_CUSTOM_CODE_orderLists
-// END_CUSTOM_CODE_orderLists
+// START_CUSTOM_CODE_order2ListView
+// END_CUSTOM_CODE_order2ListView
 (function(parent) {
     var dataProvider = app.data.sports2000,
         jsdoOptions = {
@@ -15,78 +15,75 @@ app.orderLists = kendo.observable({
         },
         dataSourceOptions = {
             type: 'jsdo',
-            transport: {
-                tableRef: 'ttOrder',
-                countFnName: "count"
-            },
-            serverFiltering: true,
-            serverSorting: true,
-            serverPaging: true,
-            pageSize: 5,
+            transport: {},
+
             schema: {
                 model: {
                     fields: {
-                        'Ordernum': {
-                            field: 'Ordernum',
+                        'SalesRep': {
+                            field: 'SalesRep',
                             defaultValue: ''
                         },
-                        'OrderStatus': {
-                            field: 'OrderStatus',
+                        'CustNum': {
+                            field: 'CustNum',
                             defaultValue: ''
                         },
                     }
                 }
             },
+            serverFiltering: true,
+            serverSorting: true,
+            serverPaging: true,
+            pageSize: 50
         },
         dataSource = new kendo.data.DataSource({
-            pageSize: 5,
-            
+            pageSize: 50
         }),
-        orderListsModel = kendo.observable({
+        order2ListViewModel = kendo.observable({
             dataSource: dataSource,
             dataSourceOptions: dataSourceOptions,
             jsdoOptions: jsdoOptions,
             itemClick: function(e) {
-                app.mobileApp.navigate('#components/orderLists/details.html?uid=' + e.dataItem.uid);
+                app.mobileApp.navigate('#components/order2ListView/details.html?uid=' + e.dataItem.uid);
             },
             detailsShow: function(e) {
                 var item = e.view.params.uid,
-                    dataSource = orderListsModel.get('dataSource'),
+                    dataSource = order2ListViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
-                if (!itemModel.Ordernum) {
-                    itemModel.Ordernum = String.fromCharCode(160);
+                if (!itemModel.SalesRep) {
+                    itemModel.SalesRep = String.fromCharCode(160);
                 }
-                orderListsModel.set('currentItem', itemModel);
+                order2ListViewModel.set('currentItem', itemModel);
             },
             currentItem: null
         });
 
-    parent.set('orderListsModel', orderListsModel);
+    parent.set('order2ListViewModel', order2ListViewModel);
     parent.set('onShow', function() {
         dataProvider.loadCatalogs().then(function _catalogsLoaded() {
-            var jsdoOptions = orderListsModel.get('jsdoOptions').toJSON(),
+            var jsdoOptions = order2ListViewModel.get('jsdoOptions').toJSON(),
                 jsdo = new progress.data.JSDO(jsdoOptions),
-                dataSourceOptions = orderListsModel.get('dataSourceOptions').toJSON(),
+                dataSourceOptions = order2ListViewModel.get('dataSourceOptions').toJSON(),
                 dataSource;
 
             dataSourceOptions.transport.jsdo = jsdo;
             dataSource = new kendo.data.DataSource(dataSourceOptions);
-            orderListsModel.set('dataSource', dataSource);
+            order2ListViewModel.set('dataSource', dataSource);
         });
     });
 
-})(app.orderLists);
+})(app.order2ListView);
 
-// START_CUSTOM_CODE_orderListsModel
+// START_CUSTOM_CODE_order2ListViewModel
 // you can handle the beforeFill / afterFill events here. For example:
 /*
-app.orderLists.orderListsModel.jsdoOptions.events = {
+app.order2ListView.order2ListViewModel.jsdoOptions.events = {
     'beforeFill' : [ {
-        scope : app.orderLists.orderListsModel,
+        scope : app.order2ListView.order2ListViewModel,
         fn : function (jsdo, success, request) {
             // beforeFill event handler statements ...
         }
     } ]
 };
 */
-// END_CUSTOM_CODE_orderListsModel
+// END_CUSTOM_CODE_order2ListViewModel

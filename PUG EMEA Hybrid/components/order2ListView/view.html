@@ -1,0 +1,15 @@
+<div data-role="view" data-title="Order List 2" data-layout="main" data-model="app.order2ListView" data-show="app.order2ListView.onShow" data-after-show="app.order2ListView.afterShow">
+    <!-- START_CUSTOM_CODE_order2ListView -->
+    <!-- END_CUSTOM_CODE_order2ListView -->
+    <!--  Certain features like grouping and inset styling are not supported when endless scroll is enabled. -->
+    <ul data-role="listview" data-style="" data-template="order2ListViewModelTemplate" data-bind="{ source: order2ListViewModel.dataSource, events: {click: order2ListViewModel.itemClick}}" data-pull-to-refresh="true" data-endless-scroll="true" data-filterable="{field: 'SalesRep', operator: 'contains'}">
+    </ul>
+    <!-- START_CUSTOM_CODE_order2ListViewModel -->
+    <!-- END_CUSTOM_CODE_order2ListViewModel -->
+    <script type="text/x-kendo-template" id="order2ListViewModelTemplate">
+        <div class="image-with-text">
+            <h3>#: data['SalesRep'] #</h3>
+            <p>#: data['CustNum'] #</p>
+        </div>
+    </script>
+</div>

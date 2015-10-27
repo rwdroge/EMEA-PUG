@@ -32,6 +32,30 @@
       "title": "List of Orders",
       "addToNavigation": true,
       "icon": "cart"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "order2ListView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "order2ListViewModel",
+          "dataProvider": "sports2000",
+          "collection": "order",
+          "headerField": "SalesRep",
+          "subHeaderField": "CustNum",
+          "filterField": "SalesRep",
+          "group": "CustNum",
+          "masterDetails": true,
+          "detailSubHeaderField": "Ordernum",
+          "detailDescriptionField": "SalesRep",
+          "pullToRefresh": true,
+          "endlessScroll": true
+        }
+      ],
+      "title": "Order List 2",
+      "addToNavigation": true,
+      "icon": "organize"
     }
   ],
   "dataProviders": [

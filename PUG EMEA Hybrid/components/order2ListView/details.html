@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Details" data-model="app.orderLists.orderListsModel" data-bind="events: { show: detailsShow }">
+<div data-role="view" data-title="Details" data-model="app.order2ListView.order2ListViewModel" data-bind="events: { show: detailsShow }">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
@@ -6,9 +6,9 @@
         </div>
     </header>
 
-    <h3 data-bind="text: currentItem.CustNum"></h3>
-    <p data-bind="text: currentItem.Instructions"></p>
+    <h3 data-bind="text: currentItem.Ordernum"></h3>
+    <p data-bind="text: currentItem.SalesRep"></p>
 
-    <!-- START_CUSTOM_CODE_orderListsModel -->
-    <!-- END_CUSTOM_CODE_orderListsModel -->
+    <!-- START_CUSTOM_CODE_order2ListViewModel -->
+    <!-- END_CUSTOM_CODE_order2ListViewModel -->
 </div>
