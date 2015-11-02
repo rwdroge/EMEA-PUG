@@ -22,7 +22,7 @@ app.orderLists = kendo.observable({
             serverFiltering: true,
             serverSorting: true,
             serverPaging: true,
-            pageSize: 5,
+            pageSize: 10,
             schema: {
                 model: {
                     fields: {
@@ -39,7 +39,7 @@ app.orderLists = kendo.observable({
             },
         },
         dataSource = new kendo.data.DataSource({
-            pageSize: 5,
+            pageSize: 10
             
         }),
         orderListsModel = kendo.observable({

@@ -15,8 +15,10 @@ app.order2ListView = kendo.observable({
         },
         dataSourceOptions = {
             type: 'jsdo',
-            transport: {},
-
+            transport: {
+                tableRef: "ttOrder",
+                countFnName: "count"
+            },
             schema: {
                 model: {
                     fields: {
@@ -34,10 +36,10 @@ app.order2ListView = kendo.observable({
             serverFiltering: true,
             serverSorting: true,
             serverPaging: true,
-            pageSize: 50
+            pageSize:20
         },
         dataSource = new kendo.data.DataSource({
-            pageSize: 50
+            pageSize: 20
         }),
         order2ListViewModel = kendo.observable({
             dataSource: dataSource,
