@@ -66,7 +66,21 @@ app.salesrepListView = kendo.observable({
         salesrepListViewModel = kendo.observable({
             dataSource: dataSource,
             dataSourceOptions: dataSourceOptions,
-            jsdoOptions: jsdoOptions
+            jsdoOptions: jsdoOptions,
+            itemClick: function(e) {
+                app.mobileApp.navigate('#components/salesrepListView/details.html?uid=' + e.dataItem.uid);
+            },
+            detailsShow: function(e) {
+                var item = e.view.params.uid,
+                    dataSource = salesrepListViewModel.get('dataSource'),
+                    itemModel = dataSource.getByUid(item);
+                itemModel.ImageUrl = processImage(itemModel.Image);
+                if (!itemModel.RepName) {
+                    itemModel.RepName = String.fromCharCode(160);
+                }
+                salesrepListViewModel.set('currentItem', itemModel);
+            },
+            currentItem: null
         });
 
     parent.set('salesrepListViewModel', salesrepListViewModel);

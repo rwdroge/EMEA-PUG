@@ -69,7 +69,11 @@
           "imageField": "SalesRep",
           "headerField": "RepName",
           "subHeaderField": "Email",
-          "masterDetails": false,
+          "masterDetails": true,
+          "detailHeaderField": "RepName",
+          "detailSubHeaderField": "Email",
+          "detailDescriptionField": "Region",
+          "detailImageField": "Image",
           "pullToRefresh": false,
           "endlessScroll": false
         }
