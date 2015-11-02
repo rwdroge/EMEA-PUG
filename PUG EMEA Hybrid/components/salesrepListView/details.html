@@ -5,10 +5,12 @@
             <span data-bind="text: currentItem.RepName" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
-	<img data-bind="attr: {src: currentItem.ImageUrl}" width="150" height="150">
+	<img data-bind="attr: {src: getSelectedImageSrc}" width="150" height="150">
     <h3 data-bind="text: currentItem.Email"></h3>
     <p data-bind="text: currentItem.Region"></p>
     
+	<a data-role="button" data-bind="events: { click: takePicture }">Take Picture</a>
+	
     <!-- START_CUSTOM_CODE_salesrepListViewModel -->
     <!-- END_CUSTOM_CODE_salesrepListViewModel -->
 </div>
