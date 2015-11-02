@@ -56,6 +56,27 @@
       "title": "Order List 2",
       "addToNavigation": true,
       "icon": "organize"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "salesrepListView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "salesrepListViewModel",
+          "dataProvider": "sports2000New",
+          "collection": "salesrep",
+          "imageField": "SalesRep",
+          "headerField": "RepName",
+          "subHeaderField": "Email",
+          "masterDetails": false,
+          "pullToRefresh": false,
+          "endlessScroll": false
+        }
+      ],
+      "title": "Sales Reps",
+      "addToNavigation": true,
+      "icon": "contacts"
     }
   ],
   "dataProviders": [

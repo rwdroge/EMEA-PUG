@@ -1,0 +1,15 @@
+<div data-role="view" data-title="Sales Reps" data-layout="main" data-model="app.salesrepListView" data-show="app.salesrepListView.onShow" data-after-show="app.salesrepListView.afterShow">
+    <!-- START_CUSTOM_CODE_salesrepListView -->
+    <!-- END_CUSTOM_CODE_salesrepListView -->
+    <ul data-role="listview" data-style="inset" data-template="salesrepListViewModelTemplate" data-bind="{ source: salesrepListViewModel.dataSource}" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul>
+    <!-- START_CUSTOM_CODE_salesrepListViewModel -->
+    <!-- END_CUSTOM_CODE_salesrepListViewModel -->
+    <script type="text/x-kendo-template" id="salesrepListViewModelTemplate">
+        <div class="image-with-text">
+            <img src="#: data['SalesRepUrl'] #" width="30%" height="30%">
+            <h3>#: data['RepName'] #</h3>
+            <p>#: data['Email'] #</p>
+        </div>
+    </script>
+</div>
