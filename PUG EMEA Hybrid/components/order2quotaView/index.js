@@ -6,7 +6,7 @@ app.order2quoteView= kendo.observable({
 });
 
 (function(parent) {
-    var dataProvider = app.data.sports2000New,
+    var dataProvider = app.data.sports2000,
         jsdoOptions = {
             name: 'salesrep',
             autoFill: false

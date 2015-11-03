@@ -8,7 +8,7 @@ app.salesrepListView = kendo.observable({
 // START_CUSTOM_CODE_salesrepListView
 // END_CUSTOM_CODE_salesrepListView
 (function (parent) {
-	var dataProvider = app.data.sports2000New,
+	var dataProvider = app.data.sports2000,
 		jsdoOptions = {
 			name: 'salesrep',
 			autoFill: false
