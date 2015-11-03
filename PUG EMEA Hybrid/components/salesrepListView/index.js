@@ -68,33 +68,27 @@ app.salesrepListView = kendo.observable({
 				return "data:image/jpeg;base64," + this.get('currentItem.Image');
 			},
 			takePicture() {
-		        	var destinationType= null,
-                        pictureSource= null;
-                
-	    		   	this.destinationType = navigator.camera.DestinationType;
-                	this.pictureSource = navigator.camera.PictureSourceType;
-                
-                	navigator.camera.getPicture(function(){
-                            salesrepListViewModel.onPhotoDataSuccess.apply(this,arguments);
-                        },function(){
-                            salesrepListViewModel.onFail.apply(this,arguments);
-                        },{
-                            quality: 50,
-                            destinationType: this.destinationType.DATA_URL
-                        });
-                
-            },    
-            onPhotoDataSuccess: function(imageData) {
-                	//alert(imageData);
-                    salesrepListViewModel.set('currentItem.Image', imageData);
-                	//call camera here
-                
-					//camera.takePicture( function(res) { salesrepListViewModel.set('currentItem.Image', imgVal); } );
-
+				//call the camera plugin to take picture
+				navigator.camera.getPicture(function (result) {
+					//on success update the Image of the current item
+					salesrepListViewModel.set('currentItem.Image', result);
+				}, function (error) {
+					//on fail print out an error message
+					alert("Failed to take picture:" + error);
+				}, {
+					quality: 50,
+					destinationType: navigator.camera.DestinationType.DATA_URL
+				});
 			},
-           	onFail: function(message) {
-                        alert(message);
-           	}    
+			
+			saveCurrentItem(event) {
+				debugger;
+				event.preventDefault();
+				this.dataSource.sync();
+			},
+			cancelCurrentItemChanges() {
+				
+			}
             
 		});
 
