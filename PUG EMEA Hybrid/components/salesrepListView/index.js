@@ -54,15 +54,10 @@ app.salesrepListView = kendo.observable({
 			itemClick: function (e) {
 				app.mobileApp.navigate('#components/salesrepListView/details.html?uid=' + e.dataItem.uid);
 			},
-			photoAs64: function (e) {
-				return "data:image/jpeg;base64," + this.get(e);
-			},
 			detailsShow: function (e) {
 				var item = e.view.params.uid,
 					dataSource = salesrepListViewModel.get('dataSource'),
 					itemModel = dataSource.getByUid(item);
-				console.log(itemModel.Image);
-				itemModel.ImageUrl = "data:image/png;base64," + itemModel.Image;
 				if (!itemModel.RepName) {
 					itemModel.RepName = String.fromCharCode(160);
 				}
@@ -73,12 +68,34 @@ app.salesrepListView = kendo.observable({
 				return "data:image/jpeg;base64," + this.get('currentItem.Image');
 			},
 			takePicture() {
-				alert("piiiiiiccccccaaaacchoooooo");
+		        	var destinationType= null,
+                        pictureSource= null;
+                
+	    		   	this.destinationType = navigator.camera.DestinationType;
+                	this.pictureSource = navigator.camera.PictureSourceType;
+                
+                	navigator.camera.getPicture(function(){
+                            salesrepListViewModel.onPhotoDataSuccess.apply(this,arguments);
+                        },function(){
+                            salesrepListViewModel.onFail.apply(this,arguments);
+                        },{
+                            quality: 50,
+                            destinationType: this.destinationType.DATA_URL
+                        });
+                
+            },    
+            onPhotoDataSuccess: function(imageData) {
+                	//alert(imageData);
+                    salesrepListViewModel.set('currentItem.Image', imageData);
+                	//call camera here
+                
+					//camera.takePicture( function(res) { salesrepListViewModel.set('currentItem.Image', imgVal); } );
 
-				//call camera here
-				//camera.takePicture( function(res) { salesrepListViewModel.set('currentItem.Image', imgVal); } );
-
-			}
+			},
+           	onFail: function(message) {
+                        alert(message);
+           	}    
+            
 		});
 
 	parent.set('salesrepListViewModel', salesrepListViewModel);
@@ -97,16 +114,3 @@ app.salesrepListView = kendo.observable({
 
 })(app.salesrepListView);
 
-// START_CUSTOM_CODE_salesrepListViewModel
-// you can handle the beforeFill / afterFill events here. For example:
-/*
-app.salesrepListView.salesrepListViewModel.jsdoOptions.events = {
-    'beforeFill' : [ {
-        scope : app.salesrepListView.salesrepListViewModel,
-        fn : function (jsdo, success, request) {
-            // beforeFill event handler statements ...
-        }
-    } ]
-};
-*/
-// END_CUSTOM_CODE_salesrepListViewModel
