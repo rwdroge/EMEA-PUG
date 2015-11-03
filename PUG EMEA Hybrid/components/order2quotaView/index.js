@@ -1,6 +1,6 @@
 'use strict';
 
-app.order2quoteView= kendo.observable({
+app.order2quotaView= kendo.observable({
     onShow: function() {},
     afterShow: function() {}
 });
@@ -36,39 +36,42 @@ app.order2quoteView= kendo.observable({
         dataSource = new kendo.data.DataSource({
             pageSize: 50
         }),
-        order2quoteViewModel = kendo.observable({
+        order2quotaViewModel = kendo.observable({
             dataSource: dataSource,
             dataSourceOptions: dataSourceOptions,
             jsdoOptions: jsdoOptions,
-            itemClick: function(e) {
-                app.mobileApp.navigate('#components/salesrepListView/details.html?uid=' + e.dataItem.uid);
+            isVisible: true,
+            onSeriesHover: function(e) {
+                 kendoConsole.log(kendo.format("event :: seriesHover ({0} : {1})", e.series.name, e.value));
             },
-            detailsShow: function(e) {
-                var item = e.view.params.uid,
-                    dataSource = salesrepListViewModel.get('dataSource'),
-                    itemModel = dataSource.getByUid(item);
-                itemModel.ImageUrl = processImage(itemModel.Image);
-                if (!itemModel.RepName) {
-                    itemModel.RepName = String.fromCharCode(160);
+            electricity: new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "../content/dataviz/js/spain-electricity.json",
+                        dataType: "json"
+                    }
+                },
+                sort: {
+                    field: "year",
+                    dir: "asc"
                 }
-                salesrepListViewModel.set('currentItem', itemModel);
-            },
-            currentItem: null
+            })
         });
-
-    parent.set('salesrepListViewModel', salesrepListViewModel);
+        kendo.bind($("#example"), order2quotaViewModel);
+    }
+	parent.set('order2quotaViewModel', order2quotaViewModel);
     parent.set('onShow', function() {
         dataProvider.loadCatalogs().then(function _catalogsLoaded() {
-            var jsdoOptions = salesrepListViewModel.get('jsdoOptions').toJSON(),
+            var jsdoOptions = order2quotaViewModel.get('jsdoOptions').toJSON(),
                 jsdo = new progress.data.JSDO(jsdoOptions),
-                dataSourceOptions = salesrepListViewModel.get('dataSourceOptions').toJSON(),
+                dataSourceOptions = order2quotaViewModel.get('dataSourceOptions').toJSON(),
                 dataSource;
 
             dataSourceOptions.transport.jsdo = jsdo;
             dataSource = new kendo.data.DataSource(dataSourceOptions);
-            salesrepListViewModel.set('dataSource', dataSource);
+            order2quotaViewModel.set('dataSource', dataSource);
         });
     });
 
-})(app.order2quoteView);
+})(app.order2quotaView);
 
