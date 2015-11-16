@@ -45,6 +45,7 @@
   "CorePlugins": [
     "org.apache.cordova.camera",
     "org.apache.cordova.device",
+    "org.apache.cordova.dialogs",
     "org.apache.cordova.network-information"
   ]
 }

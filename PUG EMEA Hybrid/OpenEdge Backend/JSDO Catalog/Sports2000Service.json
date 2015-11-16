@@ -1,0 +1,397 @@
+{
+    "version": "1.2",
+    "lastModified": "Mon Nov 02 11:16:19 UTC 2015",
+    "services": [{
+        "name": "Sports2000Service",
+        "address": "\/rest\/Sports2000Service",
+        "useRequest": true,
+        "resources": [
+            {
+                "name": "order",
+                "path": "\/order",
+                "autoSave": true,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsOrder": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "ttOrder": {
+                                "type": "array",
+                                "primaryKey": ["Ordernum"],
+                                "items": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "_id": {"type": "string"},
+                                        "_errorString": {"type": "string"},
+                                        "id": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "id"
+                                        },
+                                        "seq": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "seq"
+                                        },
+                                        "Ordernum": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "Order Num"
+                                        },
+                                        "CustNum": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "Cust Num"
+                                        },
+                                        "CustName": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "Name"
+                                        },
+                                        "OrderDate": {
+                                            "type": "string",
+                                            "ablType": "DATE",
+                                            "default": "today",
+                                            "title": "Ordered",
+                                            "format": "date"
+                                        },
+                                        "ShipDate": {
+                                            "type": "string",
+                                            "ablType": "DATE",
+                                            "default": null,
+                                            "title": "Shipped",
+                                            "format": "date"
+                                        },
+                                        "PromiseDate": {
+                                            "type": "string",
+                                            "ablType": "DATE",
+                                            "default": null,
+                                            "title": "Promised",
+                                            "format": "date"
+                                        },
+                                        "Carrier": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "Carrier"
+                                        },
+                                        "Instructions": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "Instructions"
+                                        },
+                                        "PO": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "PO"
+                                        },
+                                        "Terms": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "Net30",
+                                            "title": "Terms"
+                                        },
+                                        "SalesRep": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "Sales Rep"
+                                        },
+                                        "BillToID": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "Bill To ID"
+                                        },
+                                        "ShipToID": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "Ship To ID"
+                                        },
+                                        "OrderStatus": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "Ordered",
+                                            "title": "Order Status"
+                                        },
+                                        "WarehouseNum": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "Warehouse Num"
+                                        },
+                                        "Creditcard": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "Visa",
+                                            "title": "Credit Card"
+                                        },
+                                        "ttOrderLine": {
+                                            "type": "array",
+                                            "items": {"$ref": "#\/properties\/dsOrder\/properties\/ttOrderLine"}
+                                        }
+                                    }
+                                }
+                            },
+                            "ttOrderLine": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {"type": "string"},
+                                    "_errorString": {"type": "string"},
+                                    "Ordernum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "Order Num"
+                                    },
+                                    "Linenum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "Line Num"
+                                    },
+                                    "Itemnum": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "Item Num"
+                                    },
+                                    "Price": {
+                                        "type": "number",
+                                        "ablType": "DECIMAL",
+                                        "default": 0,
+                                        "title": "Price"
+                                    },
+                                    "Qty": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "Qty"
+                                    },
+                                    "Discount": {
+                                        "type": "integer",
+                                        "ablType": "INTEGER",
+                                        "default": 0,
+                                        "title": "Discount"
+                                    },
+                                    "ExtendedPrice": {
+                                        "type": "number",
+                                        "ablType": "DECIMAL",
+                                        "default": 0,
+                                        "title": "Extended Price"
+                                    },
+                                    "OrderLineStatus": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "Ordered",
+                                        "title": "Order Line Status"
+                                    }
+                                }
+                            },
+                            "ttCustomer": {
+                                "type": "array",
+                                "items": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "_id": {"type": "string"},
+                                        "_errorString": {"type": "string"},
+                                        "CustNum": {
+                                            "type": "integer",
+                                            "ablType": "INTEGER",
+                                            "default": 0,
+                                            "title": "CustNum"
+                                        },
+                                        "Name": {
+                                            "type": "string",
+                                            "ablType": "CHARACTER",
+                                            "default": "",
+                                            "title": "Name"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }}
+                },
+                "relations": [
+                    {
+                        "relationName": "OrdLinesRel",
+                        "parentName": "ttOrder",
+                        "childName": "ttOrderLine",
+                        "relationFields": [{
+                            "parentFieldName": "Ordernum",
+                            "childFieldName": "Ordernum"
+                        }]
+                    },
+                    {
+                        "relationName": "CustOrd",
+                        "parentName": "ttCustomer",
+                        "childName": "ttOrder",
+                        "relationFields": [{
+                            "parentFieldName": "CustNum",
+                            "childFieldName": "CustNum"
+                        }]
+                    }
+                ],
+                "operations": [
+                    {
+                        "path": "?filter={filter}",
+                        "useBeforeImage": false,
+                        "type": "read",
+                        "verb": "get",
+                        "mappingType": "JFP",
+                        "capabilities": "ablFilter,top,skip,id,orderBy",
+                        "params": []
+                    },
+                    {
+                        "name": "count",
+                        "path": "\/count?filter={filter}",
+                        "useBeforeImage": false,
+                        "type": "invoke",
+                        "verb": "put",
+                        "params": []
+                    },
+                    {
+                        "name": "MonthlySales",
+                        "path": "\/MonthlySales",
+                        "useBeforeImage": false,
+                        "type": "invoke",
+                        "verb": "put",
+                        "params": [
+                            {
+                                "name": "piYear",
+                                "type": "REQUEST_BODY"
+                            },
+                            {
+                                "name": "pcSalesRep",
+                                "type": "REQUEST_BODY"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "salesrep",
+                "path": "\/salesrep",
+                "autoSave": false,
+                "schema": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {"dsSalesrep": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {"ttSalesrep": {
+                            "type": "array",
+                            "primaryKey": ["SalesRep"],
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "_id": {"type": "string"},
+                                    "_errorString": {"type": "string"},
+                                    "SalesRep": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "SalesRep"
+                                    },
+                                    "RepName": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "RepName"
+                                    },
+                                    "Region": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "Region"
+                                    },
+                                    "MonthQuota": {
+                                        "type": "array",
+                                        "maxItems": 12,
+                                        "items": {"type": "integer"},
+                                        "ablType": "INTEGER",
+                                        "default": 0
+                                    },
+                                    "Image": {
+                                        "type": "string",
+                                        "ablType": "CLOB",
+                                        "default": null,
+                                        "title": "Image"
+                                    },
+                                    "Email": {
+                                        "type": "string",
+                                        "ablType": "CHARACTER",
+                                        "default": "",
+                                        "title": "Email"
+                                    }
+                                }
+                            }
+                        }}
+                    }}
+                },
+                "operations": [
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "update",
+                        "verb": "put",
+                        "params": [{
+                            "name": "dsSalesrep",
+                            "type": "REQUEST_BODY"
+                        }]
+                    },
+                    {
+                        "path": "?filter={filter}",
+                        "useBeforeImage": true,
+                        "type": "read",
+                        "verb": "get",
+                        "params": []
+                    },
+                    {
+                        "name": "Submitsalesrep",
+                        "path": "\/Submitsalesrep",
+                        "useBeforeImage": true,
+                        "type": "submit",
+                        "verb": "put",
+                        "params": [{
+                            "name": "dsSalesrep",
+                            "type": "REQUEST_BODY"
+                        }]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "create",
+                        "verb": "post",
+                        "params": [{
+                            "name": "dsSalesrep",
+                            "type": "REQUEST_BODY"
+                        }]
+                    },
+                    {
+                        "path": "",
+                        "useBeforeImage": true,
+                        "type": "delete",
+                        "verb": "delete",
+                        "params": [{
+                            "name": "dsSalesrep",
+                            "type": "REQUEST_BODY"
+                        }]
+                    }
+                ]
+            }
+        ]
+    }]
+}
