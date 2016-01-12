@@ -3,8 +3,8 @@
 (function() {
     var jsdoSession,
         jsdoSettings = {
-            serviceURI: 'http://54.229.183.182:8810/Sports2000',
-            catalogURIs: 'http://54.229.183.182:8810/Sports2000/static/mobile/Sports2000Service.json',
+            serviceURI: 'http://54.229.195.61:8810/SalesApp',
+            catalogURIs: 'http://54.229.195.61:8810/SalesApp/static/SalesAppService.json',
             authenticationModel: 'anonymous'
         },
         userFunctions = {
