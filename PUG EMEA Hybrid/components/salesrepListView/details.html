@@ -5,48 +5,10 @@
             <span data-bind="text: currentItem.RepName" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
-    <div id="salesrepDetailsViewForm" class="form-view">
-        <form>
-            <p>
-            	<center>
-                    <table width="80%">
-                        <tr>
-                            <td><img data-bind="attr: {src: getSelectedImageSrc}" width="150" height="150"></td>
-                            <td><a data-role="button" data-bind="events: { click: takePicture }" id="capturePhotoButton">Take Picture</a></td>
-                        </tr>
-                    </table>
-                </center>
-            </p>   
-            <ul class="form-content" data-role="listview" data-style="inset">
-                <li>
-                    <label>Full Name
-                        <input data-bind="value: currentItem.RepName" placeholder="i.e. Dröge, Ruben W." type="text">
-                    </label>
-                </li>
-				<li>
-                    <label>Email:
-                    <input data-bind="value: currentItem.Email" placeholder="i.e. me@progress.com" type="text">
-                    </label>
-                </li>
-                <li>
-                    <label>Region
-                        <input data-bind="value: currentItem.Region" placeholder="i.e. West" type="text">
-                    </label>
-                </li>
 
-            </ul>
-
-            <div class="button-group">
-                <a data-role="button" href='#salesrepListView/view.html' class="button button-block" data-bind="events: { click: cancelCurrentItemChanges }">Cancel</a>
-                <a data-role="button" href='#salesrepListView/view.html' class="button button-block button-submit" data-bind="events: { click: saveCurrentItem }">Save</a>
-            </div>
-        </form>
-    </div>
-
-    
-	
-	
+    <h3 data-bind="text: currentItem.Email"></h3>
+    <p data-bind="text: currentItem.Region"></p>
+    <img data-bind="attr: { src: currentItem.ImageUrl }" width="100%" height="auto">
     <!-- START_CUSTOM_CODE_salesrepListViewModel -->
     <!-- END_CUSTOM_CODE_salesrepListViewModel -->
 </div>
-

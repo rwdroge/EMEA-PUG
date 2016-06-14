@@ -3,8 +3,8 @@
 (function() {
     var jsdoSession,
         jsdoSettings = {
-            serviceURI: 'https://localhost:9315/SalesApp/',
-            catalogURIs: 'https://localhost:9315/SalesApp/static/SalesAppService.json',
+            serviceURI: 'http://localhost:9310/SalesApp/',
+            catalogURIs: 'http://localhost:9310/SalesApp/static/SalesAppService.json',
             authenticationModel: 'anonymous'
         },
         userFunctions = {
@@ -57,7 +57,7 @@
         };
     progress.util.jsdoSettingsProcessor(jsdoSettings);
     jsdoSession = new progress.data.JSDOSession(jsdoSettings);
-    app.data.sports2000 = {
+    app.data.sports2000New = {
         settings: jsdoSettings,
         session: jsdoSession,
         Users: userFunctions,
@@ -65,5 +65,7 @@
     };
 }());
 
-// START_CUSTOM_CODE_sports2000
-// END_CUSTOM_CODE_sports2000
+// START_CUSTOM_CODE_sports2000New
+// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
+
+// END_CUSTOM_CODE_sports2000New

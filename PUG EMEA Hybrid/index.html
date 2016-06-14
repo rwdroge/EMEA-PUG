@@ -7,24 +7,22 @@
     <link href="bower_components/kendo-ui-appbuilder-core/styles/kendo.mobile.all.min.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
 
-    <!-- cordova script (this will be a 404 during development if served with `grunt serve`) -->
     <script src="cordova.js"></script>
-
     <script src="bower_components/kendo-ui-appbuilder-core/js/jquery.min.js"></script>
     <script src="bower_components/kendo-ui-appbuilder-core/js/kendo.mobile.min.js"></script>
-    <script src="bower_components/kendo-ui-appbuilder-core/js/kendo.all.min.js"></script>
-    <script src="bower_components/everlive/min/everlive.all.min.js"></script>
-    <script src="lib/progress/progress.all.min.js"></script>
     <script src="app.js"></script>
+    <script src="bower_components/everlive/min/everlive.all.min.js"></script>
     <script src="dataProviders/defaultProvider.js"></script>
+    <script src="lib/progress/progress.all.min.js"></script>
     <script src="dataProviders/sports2000.js"></script>
+    <script src="dataProviders/sports2000New.js"></script>
 </head>
 
 <body id="kendoUiMobileApp">
     <script src="components/salesrepListView/index.js"></script>
     <script src="components/order2ListView/index.js"></script>
+    <script src="components/orderLists/index.js"></script>
     <script src="components/homeView/index.js"></script>
-    <script src="components/order2quotaView/index.js"></script>
     <div data-role="layout" data-id="main">
         <header data-role="header">
             <div data-role="navbar">
@@ -37,9 +35,9 @@
         <footer data-role="footer">
             <div data-role="tabstrip" id="navigation-container">
                 <a href="components/homeView/view.html" data-icon="home">Home View</a>
-                <a href="components/order2ListView/view.html" data-icon="cart">Order List</a>
+                <a href="components/orderLists/view.html" data-icon="cart">List of Orders</a>
+                <a href="components/order2ListView/view.html" data-icon="organize">Order List 2</a>
                 <a href="components/salesrepListView/view.html" data-icon="contacts">Sales Reps</a>
-                <a href="components/order2quotaView/view.html" data-icon="">Order2Quota</a>
             </div>
         </footer>
     </div>
