@@ -3,8 +3,8 @@
 (function() {
     var jsdoSession,
         jsdoSettings = {
-            serviceURI: 'http://localhost:9310/SalesApp/',
-            catalogURIs: 'http://localhost:9310/SalesApp/static/SalesAppService.json',
+            serviceURI: 'http://nbrotrdroge.bedford.progress.com:9310/SalesApp/',
+            catalogURIs: 'http://nbrotrdroge.bedford.progress.com:9310/SalesApp/static/SalesAppService.json',
             authenticationModel: 'anonymous'
         },
         userFunctions = {

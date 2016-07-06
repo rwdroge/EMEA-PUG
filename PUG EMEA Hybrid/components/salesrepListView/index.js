@@ -6,7 +6,7 @@ app.salesrepListView = kendo.observable({
 });
 
 // START_CUSTOM_CODE_salesrepListView
-// END_CUSTOM_CODE_salesrepListView
+
 (function(parent) {
     var dataProvider = app.data.sports2000New,
         fetchFilteredData = function(paramFilter, searchFilter) {
@@ -36,7 +36,7 @@ app.salesrepListView = kendo.observable({
                 var empty1x1png = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQI12NgYAAAAAMAASDVlMcAAAAASUVORK5CYII=';
                 img = 'data:image/png;base64,' + empty1x1png;
             }
-			img = 'data:image/png;base64,' + img; 
+			img = 'data:image/png;base64,' + img;
             return img;
         },
         jsdoOptions = {
@@ -142,6 +142,10 @@ app.salesrepListView = kendo.observable({
                 app.mobileApp.navigate('#components/salesrepListView/details.html?uid=' + dataItem.uid);
 
             },
+            editClick: function() {
+                var uid = this.originalItem.uid;
+                app.mobileApp.navigate('#components/salesrepListView/edit.html?uid=' + uid);
+            },
             detailsShow: function(e) {
                 salesrepListViewModel.setCurrentItemByUid(e.view.params.uid);
             },
@@ -176,6 +180,63 @@ app.salesrepListView = kendo.observable({
             },
             currentItem: {}
         });
+
+    parent.set('editItemViewModel', kendo.observable({
+        editFormData: {},
+        onShow: function(e) {
+            var itemUid = e.view.params.uid,
+                dataSource = salesrepListViewModel.get('dataSource'),
+                itemData = dataSource.getByUid(itemUid),
+                fixedData = salesrepListViewModel.fixHierarchicalData(itemData);
+
+            this.set('itemData', itemData);
+            this.set('editFormData', {
+                textField: itemData.RepName,
+                image: itemData.ImageUrl,
+            });
+        },
+        linkBind: function(linkString) {
+            var linkChunks = linkString.split(':');
+            return linkChunks[0] + ':' + this.get("itemData." + linkChunks[1]);
+        },
+        onSaveClick: function(e) {
+            var editFormData = this.get('editFormData'),
+                itemData = this.get('itemData'),
+                dataSource = salesrepListViewModel.get('dataSource');
+			// prepare edit
+            itemData.set('RepName', editFormData.textField);
+            
+            dataSource.one('sync', function(e) {
+                app.mobileApp.navigate('#:back');
+            });
+
+            dataSource.one('error', function() {
+                dataSource.cancelChanges(itemData);
+            });
+
+            dataSource.sync();
+        },
+        takePicture: function(e) {
+            var editFormData = this.get('editFormData'),
+            itemData = this.get('itemData');
+            console.log(editFormData);
+            //call the camera plugin to take picture
+            navigator.camera.getPicture(function (result) {
+                itemData.set('Image', result);
+                var result2 = processImage(result);
+            	//on success update the Image of the current item
+            	editFormData.set('image', result2);
+    		}, function (error) {
+     			//on fail print out an error message
+     			alert("Failed to take picture:" + error);
+    		}, {
+     		quality: 50,
+     		destinationType: navigator.camera.DestinationType.DATA_URL,
+            targetWidth: 250,
+            targetHeight: 250
+    		});
+    	}
+    }));
 
     if (typeof dataProvider.sbProviderReady === 'function') {
         dataProvider.sbProviderReady(function dl_sbProviderReady() {
@@ -216,6 +277,7 @@ app.salesrepListView = kendo.observable({
     });
 
 })(app.salesrepListView);
+// END_CUSTOM_CODE_salesrepListView
 
 // START_CUSTOM_CODE_salesrepListViewModel
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes

@@ -17,7 +17,35 @@
           "type": "kendo-ui-mobile:editableList",
           "listExtraFields": [],
           "detailExtraFields": [],
-          "components": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "image",
+                  "dataBindingRelationChildren": "[]",
+                  "title": "Image",
+                  "inputType": "image",
+                  "titlePosition": "left",
+                  "alignment": "left",
+                  "dataBindingImage": "Image"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "textField",
+                  "dataBindingRelationChildren": "[]",
+                  "title": "Text field",
+                  "inputType": "text",
+                  "titlePosition": "left",
+                  "placeholder": "Type here ...",
+                  "dataBinding": "RepName"
+                }
+              ],
+              "name": "editableListForm3",
+              "formType": "edit"
+            }
+          ],
           "name": "salesrepListViewModel",
           "dataProvider": "sports2000New",
           "collection": "salesrep",
@@ -28,13 +56,15 @@
           "pullToRefresh": false,
           "endlessScroll": false,
           "deleteItemButton": false,
-          "detailHeaderFieldSource": "static",
-          "detailHeaderFieldValue": "Detail",
+          "detailHeaderFieldSource": "dataBound",
+          "detailHeaderField": "RepName",
           "detailSubHeaderField": "Email",
           "detailDescriptionField": "Region",
           "detailImageField": "Image",
           "addItemForm": false,
-          "editItemForm": false
+          "editItemForm": true,
+          "editScreenHeaderSource": "dataBound",
+          "editScreenHeaderField": "SalesRep"
         }
       ],
       "title": "Sales Reps",
@@ -51,16 +81,6 @@
       "source": "everlive",
       "everliveKey": "xMzcl2NE5HdP3tun",
       "offlineStorage": true
-    },
-    {
-      "type": "kendo-ui-mobile:dataProvider",
-      "name": "sports2000",
-      "catalogContent": "[{\"name\":\"order\",\"path\":\"/order\",\"autoSave\":false,\"schema\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"dsOrder\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"ttOrder\":{\"type\":\"array\",\"items\":{\"additionalProperties\":false,\"properties\":{\"_id\":{\"type\":\"string\",\"name\":\"_id\"},\"_errorString\":{\"type\":\"string\",\"name\":\"_errorString\"},\"Ordernum\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Order Num\",\"name\":\"Ordernum\"},\"CustNum\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Cust Num\",\"name\":\"CustNum\"},\"OrderDate\":{\"type\":\"string\",\"ablType\":\"DATE\",\"default\":\"today\",\"title\":\"Ordered\",\"format\":\"date\",\"name\":\"OrderDate\"},\"ShipDate\":{\"type\":\"string\",\"ablType\":\"DATE\",\"default\":null,\"title\":\"Shipped\",\"format\":\"date\",\"name\":\"ShipDate\"},\"PromiseDate\":{\"type\":\"string\",\"ablType\":\"DATE\",\"default\":null,\"title\":\"Promised\",\"format\":\"date\",\"name\":\"PromiseDate\"},\"Carrier\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"Carrier\",\"name\":\"Carrier\"},\"Instructions\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"Instructions\",\"name\":\"Instructions\"},\"PO\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"PO\",\"name\":\"PO\"},\"Terms\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Net30\",\"title\":\"Terms\",\"name\":\"Terms\"},\"SalesRep\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"Sales Rep\",\"name\":\"SalesRep\"},\"BillToID\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Bill To ID\",\"name\":\"BillToID\"},\"ShipToID\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Ship To ID\",\"name\":\"ShipToID\"},\"OrderStatus\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Ordered\",\"title\":\"Order Status\",\"name\":\"OrderStatus\"},\"WarehouseNum\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Warehouse Num\",\"name\":\"WarehouseNum\"},\"Creditcard\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Visa\",\"title\":\"Credit Card\",\"name\":\"Creditcard\"}}}},\"ttOrderLine\":{\"type\":\"array\",\"items\":{\"additionalProperties\":false,\"properties\":{\"_id\":{\"type\":\"string\",\"name\":\"_id\"},\"_errorString\":{\"type\":\"string\",\"name\":\"_errorString\"},\"Ordernum\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Order Num\",\"name\":\"Ordernum\"},\"Linenum\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Line Num\",\"name\":\"Linenum\"},\"Itemnum\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Item Num\",\"name\":\"Itemnum\"},\"Price\":{\"type\":\"number\",\"ablType\":\"DECIMAL\",\"default\":0,\"title\":\"Price\",\"name\":\"Price\"},\"Qty\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Qty\",\"name\":\"Qty\"},\"Discount\":{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Discount\",\"name\":\"Discount\"},\"ExtendedPrice\":{\"type\":\"number\",\"ablType\":\"DECIMAL\",\"default\":0,\"title\":\"Extended Price\",\"name\":\"ExtendedPrice\"},\"OrderLineStatus\":{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Ordered\",\"title\":\"Order Line Status\",\"name\":\"OrderLineStatus\"}}}}}}}},\"relations\":[{\"relationName\":\"ttOrder\",\"parentName\":\"ttOrder\",\"childName\":\"ttOrderLine\",\"relationFields\":[{\"parentFieldName\":\"Ordernum\",\"childFieldName\":\"Ordernum\"}]}],\"operations\":[{\"path\":\"?filter={filter}\",\"useBeforeImage\":true,\"type\":\"read\",\"verb\":\"get\",\"mappingType\":\"JFP\",\"capabilities\":\"ablFilter,top,skip,id,orderBy\",\"params\":[],\"url\":\"/rest/Sports2000Service/order?filter={filter}\"},{\"name\":\"Submitorder\",\"path\":\"/Submitorder\",\"useBeforeImage\":true,\"type\":\"submit\",\"verb\":\"put\",\"params\":[{\"name\":\"dsOrder\",\"type\":\"REQUEST_BODY\"}],\"url\":\"/rest/Sports2000Service/order/Submitorder\"},{\"path\":\"\",\"useBeforeImage\":true,\"type\":\"create\",\"verb\":\"post\",\"params\":[{\"name\":\"dsOrder\",\"type\":\"REQUEST_BODY\"}],\"url\":\"/rest/Sports2000Service/order\"},{\"name\":\"GetttOrderLine\",\"path\":\"/GetttOrderLine\",\"useBeforeImage\":false,\"type\":\"invoke\",\"verb\":\"put\",\"params\":[{\"name\":\"filter\",\"type\":\"REQUEST_BODY\"}],\"url\":\"/rest/Sports2000Service/order/GetttOrderLine\"},{\"path\":\"\",\"useBeforeImage\":true,\"type\":\"delete\",\"verb\":\"delete\",\"params\":[{\"name\":\"dsOrder\",\"type\":\"REQUEST_BODY\"}],\"url\":\"/rest/Sports2000Service/order\"},{\"path\":\"\",\"useBeforeImage\":true,\"type\":\"update\",\"verb\":\"put\",\"params\":[{\"name\":\"dsOrder\",\"type\":\"REQUEST_BODY\"}],\"url\":\"/rest/Sports2000Service/order\"},{\"name\":\"GetttOrder\",\"path\":\"/GetttOrder\",\"useBeforeImage\":false,\"type\":\"invoke\",\"verb\":\"put\",\"params\":[{\"name\":\"filter\",\"type\":\"REQUEST_BODY\"}],\"url\":\"/rest/Sports2000Service/order/GetttOrder\"}],\"fn\":{\"GetttOrderLine\":{},\"GetttOrder\":{}},\"url\":\"/rest/Sports2000Service/order\",\"fields\":{\"ttOrder\":[{\"type\":\"string\",\"name\":\"_errorString\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Order Num\",\"name\":\"Ordernum\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Cust Num\",\"name\":\"CustNum\"},{\"type\":\"string\",\"ablType\":\"DATE\",\"default\":\"today\",\"title\":\"Ordered\",\"format\":\"date\",\"name\":\"OrderDate\"},{\"type\":\"string\",\"ablType\":\"DATE\",\"default\":null,\"title\":\"Shipped\",\"format\":\"date\",\"name\":\"ShipDate\"},{\"type\":\"string\",\"ablType\":\"DATE\",\"default\":null,\"title\":\"Promised\",\"format\":\"date\",\"name\":\"PromiseDate\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"Carrier\",\"name\":\"Carrier\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"Instructions\",\"name\":\"Instructions\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"PO\",\"name\":\"PO\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Net30\",\"title\":\"Terms\",\"name\":\"Terms\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"\",\"title\":\"Sales Rep\",\"name\":\"SalesRep\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Bill To ID\",\"name\":\"BillToID\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Ship To ID\",\"name\":\"ShipToID\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Ordered\",\"title\":\"Order Status\",\"name\":\"OrderStatus\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Warehouse Num\",\"name\":\"WarehouseNum\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Visa\",\"title\":\"Credit Card\",\"name\":\"Creditcard\"}],\"ttOrderLine\":[{\"type\":\"string\",\"name\":\"_errorString\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Order Num\",\"name\":\"Ordernum\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Line Num\",\"name\":\"Linenum\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Item Num\",\"name\":\"Itemnum\"},{\"type\":\"number\",\"ablType\":\"DECIMAL\",\"default\":0,\"title\":\"Price\",\"name\":\"Price\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Qty\",\"name\":\"Qty\"},{\"type\":\"integer\",\"ablType\":\"INTEGER\",\"default\":0,\"title\":\"Discount\",\"name\":\"Discount\"},{\"type\":\"number\",\"ablType\":\"DECIMAL\",\"default\":0,\"title\":\"Extended Price\",\"name\":\"ExtendedPrice\"},{\"type\":\"string\",\"ablType\":\"CHARACTER\",\"default\":\"Ordered\",\"title\":\"Order Line Status\",\"name\":\"OrderLineStatus\"}]},\"primaryKeys\":{},\"_dataSetName\":\"dsOrder\",\"generic\":{}}]",
-      "title": "Sports 2000",
-      "source": "jsdo",
-      "url": "https://54.229.247.44:8811/Sports2000",
-      "catalogUrl": "https://54.229.247.44:8811/Sports2000/static/mobile/Sports2000Service.json",
-      "authentication": "anonymous"
     },
     {
       "type": "kendo-ui-mobile:dataProvider",

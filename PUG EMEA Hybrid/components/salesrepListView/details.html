@@ -2,7 +2,8 @@
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span>Detail</span>
+            <span data-bind="text: currentItem['RepName']"></span>
+            <a data-role="button" data-align="right" data-bind="events: { click: editClick }">Edit</a>
         </div>
     </header>
 
@@ -10,8 +11,7 @@
         <div class="km-listview-wrapper">
             <ul class="km-listview km-list km-listinset details-fields">
                 <li>
-                    <h3 data-bind="text: currentItem.RepName"></h3>
-                </li>
+                    <h3 data-bind="text: currentItem.Email"></h3></li>
                 <li>
                     <p data-bind="text: currentItem.Region"></p>
                 </li>

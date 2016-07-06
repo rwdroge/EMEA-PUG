@@ -10,7 +10,7 @@
             app.mobileApp = new kendo.mobile.Application(document.body, {
                 transition: 'slide',
                 skin: 'flat',
-                initial: 'components/homeView/view.html'
+                initial: 'components/salesrepListView/view.html'
             });
         });
     };

@@ -1,0 +1,44 @@
+<div data-role="view" data-title="Edit" data-model="app.salesrepListView.editItemViewModel" data-bind="events: { show: onShow }" id="salesrepListViewModelEditItemView">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <span data-bind="text: itemData['SalesRep']"></span>
+            <a data-role="backbutton" data-align="left">Cancel</a>
+            <a data-role="button" data-align="right" data-bind="events: { click: onSaveClick }">Save</a>
+        </div>
+    </header>
+    <!-- START_CUSTOM_CODE_salesrepListViewModel -->
+    <!-- END_CUSTOM_CODE_salesrepListViewModel -->
+    <div id="editableListForm3" class="form-view">
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li class="form-content-item">
+
+
+                    <div class="imageListItem">
+
+                        <div>Photo</div>
+
+                        <div class="align-left">
+
+                            <img data-bind="attr: { src: editFormData.image }"/>
+							<a data-role="button" data-bind="events: { click: takePicture }">Take a different picture</a>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="form-content-item">
+
+                    <label>
+
+                        <span>Name:</span>
+
+                        <input id="textField" data-bind="value: editFormData.textField" placeholder="Type here ..." type="text">
+                    </label>
+
+                </li>
+            </ul>
+        </form>
+        <!-- START_CUSTOM_CODE_editableListForm3 -->
+        <!-- END_CUSTOM_CODE_editableListForm3 -->
+    </div>
+</div>

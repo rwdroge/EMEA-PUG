@@ -41,12 +41,5 @@
     "ID_RESOLUTION_WVGA",
     "ID_RESOLUTION_WXGA",
     "ID_RESOLUTION_HD720P"
-  ],
-  "CorePlugins": [
-    "cordova-plugin-camera",
-    "cordova-plugin-device",
-    "cordova-plugin-dialogs",
-    "cordova-plugin-network-information",
-    "cordova-plugin-whitelist"
   ]
 }
