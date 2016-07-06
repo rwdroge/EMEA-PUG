@@ -5,6 +5,8 @@
     <title></title>
     <meta charset="utf-8">
     <link href="bower_components/kendo-ui-appbuilder-core/styles/kendo.mobile.all.min.css" rel="stylesheet">
+
+    <link href="styles/overrides.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
 
     <script src="cordova.js"></script>
@@ -20,8 +22,6 @@
 
 <body id="kendoUiMobileApp">
     <script src="components/salesrepListView/index.js"></script>
-    <script src="components/order2ListView/index.js"></script>
-    <script src="components/orderLists/index.js"></script>
     <script src="components/homeView/index.js"></script>
     <div data-role="layout" data-id="main">
         <header data-role="header">
@@ -29,14 +29,9 @@
                 <span data-role="view-title"></span>
             </div>
         </header>
-
-        <!-- application views will be rendered here -->
-
         <footer data-role="footer">
             <div data-role="tabstrip" id="navigation-container">
                 <a href="components/homeView/view.html" data-icon="home">Home View</a>
-                <a href="components/orderLists/view.html" data-icon="cart">List of Orders</a>
-                <a href="components/order2ListView/view.html" data-icon="organize">Order List 2</a>
                 <a href="components/salesrepListView/view.html" data-icon="contacts">Sales Reps</a>
             </div>
         </footer>
@@ -48,9 +43,6 @@
                 <span data-role="view-title"></span>
             </div>
         </header>
-
-        <!-- application views will be rendered here -->
-
         <footer data-role="footer">
         </footer>
     </div>

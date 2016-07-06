@@ -11,71 +11,30 @@
     },
     {
       "type": "kendo-ui-mobile:view",
-      "name": "orderLists",
-      "components": [
-        {
-          "type": "kendo-ui-mobile:list",
-          "name": "orderListsModel",
-          "dataProvider": "sports2000",
-          "collection": "order",
-          "headerField": "Ordernum",
-          "subHeaderField": "OrderStatus",
-          "filterField": "SalesRep",
-          "masterDetails": true,
-          "detailHeaderField": "Ordernum",
-          "detailSubHeaderField": "CustNum",
-          "detailDescriptionField": "Instructions",
-          "pullToRefresh": false,
-          "endlessScroll": false
-        }
-      ],
-      "title": "List of Orders",
-      "addToNavigation": true,
-      "icon": "cart"
-    },
-    {
-      "type": "kendo-ui-mobile:view",
-      "name": "order2ListView",
-      "components": [
-        {
-          "type": "kendo-ui-mobile:list",
-          "name": "order2ListViewModel",
-          "dataProvider": "sports2000",
-          "collection": "order",
-          "headerField": "SalesRep",
-          "subHeaderField": "CustNum",
-          "filterField": "SalesRep",
-          "group": "CustNum",
-          "masterDetails": true,
-          "detailSubHeaderField": "Ordernum",
-          "detailDescriptionField": "SalesRep",
-          "pullToRefresh": true,
-          "endlessScroll": true
-        }
-      ],
-      "title": "Order List 2",
-      "addToNavigation": true,
-      "icon": "organize"
-    },
-    {
-      "type": "kendo-ui-mobile:view",
       "name": "salesrepListView",
       "components": [
         {
-          "type": "kendo-ui-mobile:list",
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [],
           "name": "salesrepListViewModel",
           "dataProvider": "sports2000New",
           "collection": "salesrep",
-          "imageField": "SalesRep",
           "headerField": "RepName",
+          "imageField": "Image",
           "subHeaderField": "Email",
-          "masterDetails": true,
-          "detailHeaderField": "RepName",
+          "isMapView": false,
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
           "detailSubHeaderField": "Email",
           "detailDescriptionField": "Region",
           "detailImageField": "Image",
-          "pullToRefresh": false,
-          "endlessScroll": false
+          "addItemForm": false,
+          "editItemForm": false
         }
       ],
       "title": "Sales Reps",
@@ -118,5 +77,9 @@
   "navigation": "tabstrip",
   "view": "homeView",
   "transition": "slide",
-  "skin": "flat"
+  "showMoreTab": false,
+  "skin": "flat",
+  "skinMainColor": "#1a1a1a",
+  "skinTextColor": "#ffffff",
+  "skinAccentColor": "#10c4b2"
 }

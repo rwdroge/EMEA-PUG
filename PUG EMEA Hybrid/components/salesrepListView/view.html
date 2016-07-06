@@ -2,13 +2,28 @@
 
     <!-- START_CUSTOM_CODE_salesrepListView -->
     <!-- END_CUSTOM_CODE_salesrepListView -->
-    <ul data-role="listview" data-style="inset" data-template="salesrepListViewModelTemplate" data-bind="{ source: salesrepListViewModel.dataSource, events: {click: salesrepListViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="backbutton" data-align="left" class="backButtonWrapper" style="display: none;">Back</a>
+            <span data-role="view-title"></span>
+
+
+        </div>
+    </header>
+
+
+    <ul class="masterDetailView" data-role="listview" data-auto-bind="false" data-style="inset" data-template="salesrepListViewModelTemplate" data-bind="{ source: salesrepListViewModel.dataSource, events: {click: salesrepListViewModel.itemClick} }" data-pull-to-refresh="false"
+    data-endless-scroll="false">
     </ul>
+
+
     <!-- START_CUSTOM_CODE_salesrepListViewModel -->
     <!-- END_CUSTOM_CODE_salesrepListViewModel -->
     <script type="text/x-kendo-template" id="salesrepListViewModelTemplate">
         <div class="image-with-text">
-            <img src="#: data['SalesRepUrl'] #" width="30%" height="30%">
+            # data = app.salesrepListView.salesrepListViewModel.fixHierarchicalData(data); #
+
+            <img src="#: data['ImageUrl'] #">
             <h3>#: data['RepName'] #</h3>
             <p>#: data['Email'] #</p>
         </div>

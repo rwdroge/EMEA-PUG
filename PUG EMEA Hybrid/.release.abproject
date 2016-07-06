@@ -2,9 +2,10 @@
   "CordovaPluginVariables": {},
   "CorePlugins": [
     "com.telerik.LivePatch",
-    "org.apache.cordova.camera",
-    "org.apache.cordova.device",
-    "org.apache.cordova.dialogs",
-    "org.apache.cordova.network-information"
+    "cordova-plugin-camera",
+    "cordova-plugin-device",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
+    "cordova-plugin-whitelist"
   ]
 }
